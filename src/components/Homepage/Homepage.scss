@@ -1,5 +1,4 @@
 .main-layout {
-  // position: absolute;
 
   img {
     display: block;
@@ -13,9 +12,14 @@
   color: white;
   font-size: 30px;
   font-weight: bold;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -45%);
-  letter-spacing: 0.6em;
+  text-align: center;
+  letter-spacing: 0.5em;
+}
+
+.homepage-image {
+  background-image: url("/site-images/homepage-image.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
 }
