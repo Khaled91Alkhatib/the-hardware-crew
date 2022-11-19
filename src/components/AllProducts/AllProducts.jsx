@@ -5,6 +5,7 @@ import GeneralContext from '../../contexts/GeneralContext';
 import Product from '../Product/Product';
 
 import { getProducts } from '../../helpers/getProducts';
+import './AllProducts.scss';
 
 const AllProducts = () => {
   const { products } = useContext(GeneralContext);
@@ -25,9 +26,10 @@ const AllProducts = () => {
   // console.log("selection", selection);
 
   return (
-    <div>
-      {/* <h1>Products</h1> */}
-      {categoryBasedProducts}
+    <div className='allproducts-main-image'>
+      <div className='all-products'>
+        {categoryBasedProducts}
+      </div>
     </div>
   );
 };

@@ -1,22 +1,25 @@
 .nav-buttons {
-  position: absolute;
   text-align: center;
-  left: 50%;
-  transform: translate(-50%);
+  background-color: black;
+  // overflow: auto;
+  border-bottom: 2px solid green;
+  position: fixed;
+  width: 100%;
 
   button {
-    padding: 2em 3em;
-    margin: 1em;
+    padding: 1em 3em;
+    margin: 0.5em;
     background-color: black;
     border: none;
     color: white;
     font-size: 15px;
-    border-radius: 5px;
     font-weight: bold;
 
-    &:hover {
+    a:hover {
+      padding-bottom: 1em;
+      color: grey;
       cursor: pointer;
-      scale: 1.1;
+      border-bottom: 2px solid yellow;
     }
   }
 }
