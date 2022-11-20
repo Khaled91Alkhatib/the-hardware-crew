@@ -5,15 +5,41 @@
   border-bottom: 2px solid green;
   position: fixed;
   width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    // height: 60px;
+    width: 200px;
+    padding: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   button {
-    padding: 1em 3em;
+    padding: 1em 2em;
     margin: 0.5em;
     background-color: black;
     border: none;
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
+
+    &.cart {
+      background-color: rgb(41, 41, 41);
+      border-radius: 9px;
+      margin: 0;
+      padding: 10px;
+      margin-right: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
 
     a:hover {
       padding-bottom: 1em;
@@ -22,4 +48,17 @@
       border-bottom: 2px solid yellow;
     }
   }
+}
+
+.badge {
+  border-radius: 9px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bolder;
+  padding: 0 8px;
+  vertical-align: top;
+  margin-left: -8px;
+  letter-spacing: 0;
+  // text-align: center;
 }
