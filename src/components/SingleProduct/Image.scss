@@ -1,0 +1,31 @@
+.image-file {
+  margin-left: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .arrows {
+    border: none;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    margin: 0 20px;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.2;
+    }
+  }
+}
+
+.single-image {
+  height: 400px;
+
+  @media screen and (max-width: 768px) {
+    height: 150px;
+  }
+}
