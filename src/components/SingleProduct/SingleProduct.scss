@@ -16,7 +16,7 @@
     align-items: center;
     background-color: rgb(29, 29, 29);
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -36,6 +36,31 @@
 
       .product-name {
         text-decoration: underline;
+      }
+
+      .price {
+        color: #00b500;
+        font-size: 17px;
+      }
+
+      .add-to-cart-position {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .add-to-cart {
+        border: none;
+        background-color: rgb(0, 186, 0);
+        padding: 0.6em 1em;
+        margin-top: 2em;
+        border-radius: 4px;
+        font-weight: bold;
+
+        &:hover {
+          cursor: pointer;
+          scale: 1.05;
+        }
       }
     }
   }
