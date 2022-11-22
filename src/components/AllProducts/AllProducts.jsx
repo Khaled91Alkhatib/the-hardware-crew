@@ -19,7 +19,7 @@ const AllProducts = () => {
 
   const categoryBasedProducts = selection && selection.map(product => {
     return (
-      <Product product={product} />
+      <Product product={product} key={product.id} />
     );
   });
   // console.log("both", products, category);
