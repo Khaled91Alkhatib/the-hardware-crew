@@ -9,7 +9,7 @@ import Colors from './Colors';
 import './SingleProduct.scss';
 
 const SingleProduct = () => {
-  const { products } = useContext(GeneralContext);
+  const { products, cart, setCart } = useContext(GeneralContext);
   const [id, setId] = useState(Number(useParams().id));
   const [product, setProduct] = useState({});
   const [images, setImages] = useState([]);
@@ -63,6 +63,30 @@ const SingleProduct = () => {
     getProductById(id);
   };
 
+  const addToCart = () => {
+    const newCartItem = {
+      sku: product.sku,
+      name: product.name,
+      color: product.color,
+      price: product.price,
+      image1: product.image1,
+
+      quantity: 1,
+    };
+
+    const existingItemInCart = cart.find((item) => {
+      return item.sku === newCartItem.sku;
+    });
+
+    if (!existingItemInCart) {
+      setCart([...cart, newCartItem]);
+    } else if (existingItemInCart) {
+      existingItemInCart.quantity += 1;
+      setCart([...cart]);
+    }
+
+  };
+
 
   return (
     <div className='single-product'>
@@ -81,7 +105,7 @@ const SingleProduct = () => {
           <span style={{ textDecoration: 'underline' }} className='description'>Description:</span>
           <div style={{ marginTop: "10px" }}>{product.description}</div>
           <div className='add-to-cart-position'>
-            <button className='add-to-cart'>ADD TO CART</button>
+            <button onClick={addToCart} className='add-to-cart'>ADD TO CART</button>
           </div>
         </div>
       </div>
