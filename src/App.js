@@ -3,10 +3,11 @@ import axios from "axios";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import GeneralContext from "./contexts/GeneralContext";
-import { Homepage, Navbar, AllProducts, SingleProduct } from "./components/index";
+import { Homepage, Navbar, AllProducts, SingleProduct, ShoppingCart } from "./components/index";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:5001/api/products')
@@ -16,9 +17,20 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem('cart-info'));
+    if (cart) {
+      setCart(cart);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart-info', JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <div>
-      <GeneralContext.Provider value={{ products }} >
+      <GeneralContext.Provider value={{ products, cart, setCart }} >
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -27,6 +39,7 @@ function App() {
             <Route path="/products/keyboards/:id" element={<SingleProduct />} />
             <Route path="/products/mice/:id" element={<SingleProduct />} />
             <Route path="/products/headsets/:id" element={<SingleProduct />} />
+            <Route path="/shoppingcart" element={<ShoppingCart />} />
           </Routes>
         </BrowserRouter>
       </GeneralContext.Provider>
