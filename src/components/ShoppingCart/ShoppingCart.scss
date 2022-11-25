@@ -18,6 +18,14 @@
       padding-bottom: 20px;
       padding-top: 1em;
     }
+
+    .cart-count {
+      width: 80%;
+      margin: auto;
+      color: rgb(0, 161, 0);
+      font-weight: bold;
+      font-size: 20px;
+    }
   }
 }
 
@@ -49,6 +57,41 @@ table {
   margin-bottom: 1em;
 }
 
+.remove-button {
+  border: none;
+  text-align: left;
+  padding: 0;
+  background-color: #1d1d1d;
+  color: red;
+  text-decoration: underline;
+  margin-top: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.minus-quantity-plus {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0;
+}
+
+.plus-minus-button {
+  border: none;
+  background-color: #1d1d1d;
+  letter-spacing: 0;
+}
+
+.fa-square-minus,
+.fa-square-plus {
+  color: white;
+  font-size: 15px;
+  letter-spacing: 0;
+}
+
 .image-to-desc {
   display: flex;
   justify-content: flex-start;
@@ -64,4 +107,23 @@ table {
 .image-in-cart {
   width: 150px;
   margin-right: 2em;
+}
+
+.taxes-total {
+  margin: 10px auto;
+  font-size: 17px;
+  width: 20%;
+}
+
+.taxes,
+.total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &.total {
+    color: rgb(0, 206, 0);
+    font-weight: bold;
+    font-size: 20px;
+  }
 }
