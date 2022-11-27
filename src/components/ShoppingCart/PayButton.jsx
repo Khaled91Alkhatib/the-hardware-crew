@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-// import {url} from "../slice/api"
+import './PayButton.scss'
 
 const payButton = ({ cart, setCart }) => {
   // async function handleCheckout() {
@@ -29,7 +29,7 @@ const payButton = ({ cart, setCart }) => {
 
   return (
     <>
-      <button onClick={() => handleCheckout()}>
+      <button className='checkout-button' onClick={() => handleCheckout()}>
         CHECKOUT
       </button>
     </>
