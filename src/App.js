@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import GeneralContext from "./contexts/GeneralContext";
 import { Homepage, Navbar, AllProducts, SingleProduct, ShoppingCart } from "./components/index";
+import ThankYou from "./components/ShoppingCart/ThankYou";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -40,6 +41,7 @@ function App() {
             <Route path="/products/mice/:id" element={<SingleProduct />} />
             <Route path="/products/headsets/:id" element={<SingleProduct />} />
             <Route path="/shoppingcart" element={<ShoppingCart />} />
+            <Route path="/thankyou" element={<ThankYou />} />
           </Routes>
         </BrowserRouter>
       </GeneralContext.Provider>
