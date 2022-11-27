@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import "./ShoppingCart.scss";
 
+import PayButton from './PayButton';
 import GeneralContext from '../../contexts/GeneralContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +12,7 @@ library.add(faTrashCan, faSquarePlus, faSquareMinus);
 
 const ShoppingCart = () => {
   const { cart, setCart } = useContext(GeneralContext);
-  // console.log('cart', cart);
+  console.log('cart', cart);
 
   const cartItemNumber = cart.reduce((pre, cur) => pre + cur.quantity, 0);
   console.log(cartItemNumber);
@@ -119,6 +120,7 @@ const ShoppingCart = () => {
             <div>Total: </div>
             <div>${totalAftertaxes}</div>
           </div>
+          <PayButton cart={cart} setCart={setCart} />
         </div>
       </div>
     </div>
