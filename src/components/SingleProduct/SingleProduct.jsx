@@ -7,6 +7,8 @@ import Image from './Image';
 import Colors from './Colors';
 
 import './SingleProduct.scss';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleProduct = () => {
   const { products, cart, setCart } = useContext(GeneralContext);
@@ -80,11 +82,12 @@ const SingleProduct = () => {
 
     if (!existingItemInCart) {
       setCart([...cart, newCartItem]);
+      toast("Item Added To Cart", { type: 'success', autoClose: 1500, theme: 'dark' });
     } else if (existingItemInCart) {
       existingItemInCart.quantity += 1;
       setCart([...cart]);
+      toast("Item Added To Cart", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
     }
-
   };
 
 
@@ -106,6 +109,7 @@ const SingleProduct = () => {
           <div style={{ marginTop: "10px" }}>{product.description}</div>
           <div className='add-to-cart-position'>
             <button onClick={addToCart} className='add-to-cart'>ADD TO CART</button>
+            <ToastContainer />
           </div>
         </div>
       </div>
