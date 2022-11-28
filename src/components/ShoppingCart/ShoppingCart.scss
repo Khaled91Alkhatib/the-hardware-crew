@@ -90,6 +90,11 @@ table {
   color: white;
   font-size: 15px;
   letter-spacing: 0;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
 }
 
 .image-to-desc {
