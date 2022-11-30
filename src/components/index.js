@@ -5,3 +5,4 @@ export { default as Product } from "./Product/Product";
 export { default as SingleProduct } from "./SingleProduct/SingleProduct";
 export { default as ShoppingCart } from "./ShoppingCart/ShoppingCart";
 export { default as NoPage } from "./NoPage/NoPage";
+export { default as AddProducts } from "./AddProducts/AddProducts";
