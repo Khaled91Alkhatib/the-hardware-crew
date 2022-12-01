@@ -3,7 +3,7 @@ import axios from "axios";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import GeneralContext from "./contexts/GeneralContext";
-import { Homepage, Navbar, AllProducts, SingleProduct, ShoppingCart, NoPage, AddProducts } from "./components/index";
+import { Homepage, Navbar, AllProducts, SingleProduct, ShoppingCart, NoPage, AddProducts, Dashboard } from "./components/index";
 import ThankYou from "./components/ShoppingCart/ThankYou";
 
 function App() {
@@ -43,7 +43,8 @@ function App() {
             <Route path="/shoppingcart" element={<ShoppingCart />} />
             <Route path="/thankyou" element={<ThankYou />} />
             <Route path="/*" element={<NoPage />} />
-            <Route path="/addproducts" element={<AddProducts />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/addproducts" element={<AddProducts />} />
           </Routes>
         </BrowserRouter>
       </GeneralContext.Provider>
