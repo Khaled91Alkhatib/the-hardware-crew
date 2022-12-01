@@ -6,3 +6,4 @@ export { default as SingleProduct } from "./SingleProduct/SingleProduct";
 export { default as ShoppingCart } from "./ShoppingCart/ShoppingCart";
 export { default as NoPage } from "./NoPage/NoPage";
 export { default as AddProducts } from "./AddProducts/AddProducts";
+export { default as Dashboard } from "./Dashboard/Dashboard";
