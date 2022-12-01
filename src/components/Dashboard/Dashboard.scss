@@ -1,0 +1,52 @@
+.user-login {
+  padding-top: 100px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  // width: 50%;
+  margin: auto;
+  align-items: center;
+  background-color: black;
+  font-size: 20px;
+
+  .form {
+    background-color: rgb(29, 29, 29);
+    color: white;
+    margin: 0 2em;
+    padding: 2em 3em;
+    border-radius: 15px;
+  }
+}
+
+.label-input {
+  margin: 0.5em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login, .register {
+  border: none;
+  padding: 0.5em 2em;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+  margin-top: 1em;
+  
+  &:hover{
+    cursor: pointer;
+  }
+
+  &.login {
+    background-color: rgb(94, 94, 255);
+  }
+
+  &.register {
+    background-color: green;
+  }
+}
+
+.form-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
