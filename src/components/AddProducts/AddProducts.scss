@@ -1,0 +1,59 @@
+.add-product {
+  padding-top: 100px;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  background-image: url("../../site-images/BannerConsumer.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  .add-product-container {
+    background-color: black;
+    opacity: 0.8;
+    width: 60%;
+    margin: auto;
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .new-title {
+      font-size: 25px;
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    textarea {
+      border: none;
+      background-color: rgb(171, 171, 171);
+      outline: none;
+      height: 30px;
+      width: 300px;
+      border-radius: 5px;
+      font-size: 15px;
+      line-height: normal;
+      resize: none;
+    }
+    .select-tag-inadd {
+      background-color: rgb(171, 171, 171);
+      height: 30px;
+      min-width: 100px;
+    }
+  }
+}
+
+::placeholder {
+  color: white;
+}
+
+.individuals {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-right {
+  display: flex;
+  justify-content: space-between;
+}

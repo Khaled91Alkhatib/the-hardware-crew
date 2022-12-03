@@ -1,3 +1,5 @@
+// This serves for both customer and admin navbars
+
 .nav-buttons {
   text-align: center;
   background-color: black;
@@ -39,6 +41,7 @@
 
       &:hover {
         cursor: pointer;
+        scale: 1.1;
       }
     }
 
