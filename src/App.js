@@ -13,6 +13,10 @@ function App() {
 
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [productSpecs, setProductSpecs] = useState({
+    categories: [],
+    colors: []
+  });
 
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -31,6 +35,17 @@ function App() {
   }, []);
 
   useEffect(() => {
+    axios.get('http://localhost:5001/specifications')
+      .then((res) => {
+        const categories = res.data.categories;
+        const colors = res.data.colors;
+        setProductSpecs({ categories, colors });
+        // console.log(colors)
+        // console.log("now", res)
+      });
+  }, []);
+
+  useEffect(() => {
     const cart = JSON.parse(localStorage.getItem('cart-info'));
     if (cart) {
       setCart(cart);
@@ -43,7 +58,7 @@ function App() {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    setUser(user)
+    setUser(user);
   }, []);
 
   useEffect(() => {
@@ -54,6 +69,13 @@ function App() {
     axios.post('http://localhost:5001/users', { username: registerUsername, password: registerPassword })
       .then((res) => {
         console.log(res);
+        toast("New User Registered", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
+
+        // This will empty input fields
+        let elements = document.getElementsByTagName("input");
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].value = "";
+        }
       });
   };
 
@@ -66,7 +88,7 @@ function App() {
           toast("Invalid Credentials!", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
         } else {
           setUser(loggedUser);
-          navigate("./dashboard/addProducts");
+          navigate("./dashboard/addproducts");
         }
       });
   };
@@ -74,7 +96,7 @@ function App() {
   // console.log('user', user)
   return (
     <div>
-      <GeneralContext.Provider value={{ products, cart, setCart }} >
+      <GeneralContext.Provider value={{ products, productSpecs, cart, setCart }} >
         {user.name ? <AdminNav user={user} setUser={setUser} /> : <Navbar />}
         {/* <Navbar /> */}
         <Routes>
@@ -95,7 +117,11 @@ function App() {
               setUsername={setUsername}
               setPassword={setPassword}
             />} />
-          {user.name ? <Route path="/dashboard/addproducts" element={<AddProducts />} /> : <Route path="/dashboard" element={<Dashboard />} />}
+          {user.name ?
+            <Route path="/dashboard/addproducts"
+              element={<AddProducts />} />
+            :
+            <Route path="/dashboard" element={<Dashboard />} />}
         </Routes>
       </GeneralContext.Provider>
     </div>
