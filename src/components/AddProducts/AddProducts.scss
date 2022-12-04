@@ -10,7 +10,7 @@
 
   .add-product-container {
     background-color: black;
-    opacity: 0.8;
+    opacity: 0.9;
     width: 60%;
     margin: auto;
     padding: 1em;
@@ -24,21 +24,38 @@
       text-decoration: underline;
     }
 
-    textarea {
+    textarea,
+    .input {
       border: none;
       background-color: rgb(171, 171, 171);
       outline: none;
       height: 30px;
       width: 300px;
       border-radius: 5px;
-      font-size: 15px;
+      font-size: 13px;
       line-height: normal;
       resize: none;
+    }
+
+    .new-price::-webkit-outer-spin-button,
+    .new-price::-webkit-inner-spin-button {
+      display: none;
+      margin: 0;
     }
     .select-tag-inadd {
       background-color: rgb(171, 171, 171);
       height: 30px;
       min-width: 100px;
+    }
+
+    .all-display {
+      display: flex;
+      align-items: center;
+      margin-top: 1em;
+
+      .display-in-add {
+        accent-color: yellow;
+      }
     }
   }
 }
@@ -56,4 +73,19 @@
 .left-right {
   display: flex;
   justify-content: space-between;
+}
+
+.add-button {
+  width: 50%;
+  margin: 10px auto 0 auto;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: rgb(60, 60, 255);
+  padding: 1em;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
 }
