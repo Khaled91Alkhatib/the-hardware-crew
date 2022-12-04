@@ -17,14 +17,23 @@ function App() {
     categories: [],
     colors: []
   });
-
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const [user, setUser] = useState({ name: "", password: "" });
+
+  const [newSku, setNewSku] = useState("");
+  const [newName, setNewName] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
+
+  const [color, setColor] = useState("");
+  const [category, setCategory] = useState("");
+  const [display, setDisplay] = useState(false);
 
   useEffect(() => {
     axios.get('http://localhost:5001/api/products')
@@ -85,11 +94,25 @@ function App() {
         console.log(res.data.rows[0]);
         const loggedUser = res.data.rows[0];
         if (res.data.rows.length === 0) {
-          toast("Invalid Credentials!", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
+          toast("Invalid Credentials!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
         } else {
           setUser(loggedUser);
           navigate("./dashboard/addproducts");
         }
+      });
+  };
+
+  const addProduct = () => {
+    axios.post("http://localhost:5001/api/products", {
+      sku: newSku, name: newName, price: newPrice,
+      description: newDescription,
+      image1: image1, image2: image2, image3: image3,
+      color: color, category: category, display: display
+    })
+      .then(res => {
+        console.log('new product', res);
+        // toast("New Product Added", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
+
       });
   };
 
@@ -119,7 +142,25 @@ function App() {
             />} />
           {user.name ?
             <Route path="/dashboard/addproducts"
-              element={<AddProducts />} />
+              element={<AddProducts
+                addProduct={addProduct}
+                setNewSku={setNewSku}
+                setNewName={setNewName}
+                setNewPrice={setNewPrice}
+                setNewDescription={setNewDescription}
+                setImage1={setImage1}
+                setImage2={setImage2}
+                setImage3={setImage3}
+                setColor={setColor}
+                setCategory={setCategory}
+                setDisplay={setDisplay}
+                display={display}
+                category={category}
+                color={color}
+                image1={image1}
+                image2={image2}
+                image3={image3}
+              />} />
             :
             <Route path="/dashboard" element={<Dashboard />} />}
         </Routes>
