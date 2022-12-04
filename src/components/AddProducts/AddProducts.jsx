@@ -1,21 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import GeneralContext from '../../contexts/GeneralContext';
 import MenuItem from '@mui/material/MenuItem';
 
 import './AddProducts.scss';
 import { Select } from '@mui/material';
 
-const AddProducts = () => {
+const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDescription, setImage1, setImage2, setImage3, setColor, setCategory, setDisplay, category, color, image1, image2, image3 }) => {
   const { productSpecs } = useContext(GeneralContext);
   console.log('specs', productSpecs);
 
-  const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
-  const [image3, setImage3] = useState(null);
+  // const [image1, setImage1] = useState(null);
+  // const [image2, setImage2] = useState(null);
+  // const [image3, setImage3] = useState(null);
 
+  // const [color, setColor] = useState("");
+  // const [category, setCategory] = useState("");
 
-  const [color, setColor] = useState("");
-  const [category, setCategory] = useState("");
+  // const [newSku, setNewSku] = useState("");
+  // const [newName, setNewName] = useState("");
+  // const [newPrice, setNewPrice] = useState("");
+  // const [newDescription, setNewDescription] = useState("");
 
   const onImage1Change = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -35,14 +39,12 @@ const AddProducts = () => {
     }
   };
 
-
   const handleColorChange = e => {
     setColor(e.target.value);
   };
   const handleCategoryChange = e => {
     setCategory(e.target.value);
   };
-
 
   const categories = productSpecs.categories.map(category => {
     return (
@@ -56,6 +58,14 @@ const AddProducts = () => {
     );
   });
 
+  const handleDisplay = (e) => {
+    if (e.target.checked) {
+      setDisplay(true);
+    } else {
+      setDisplay(false);
+    }
+  };
+
   return (
     <div className='add-product'>
       <div className='add-product-container'>
@@ -68,17 +78,17 @@ const AddProducts = () => {
           <div>
             <div className='individuals'>
               <label>SKU: </label>
-              <textarea placeholder='SKU...'></textarea>
+              <input onChange={e => { setNewSku(e.target.value); }} className='input' required placeholder='SKU...'></input>
             </div>
             <br />
             <div className='individuals'>
               <label>Name: </label>
-              <textarea placeholder='Item Name...'></textarea>
+              <input onChange={e => { setNewName(e.target.value); }} className='input' required placeholder='Item Name...'></input>
             </div>
             <br />
             <div>
               <label>Category: </label>
-              <Select className='select-tag-inadd' value={category} onChange={handleCategoryChange}>
+              <Select required className='select-tag-inadd' value={category} onChange={handleCategoryChange}>
                 {categories}
               </Select>
               {/* <input placeholder='Item Category...'></input> */}
@@ -86,7 +96,7 @@ const AddProducts = () => {
             <br />
             <div>
               <label>Color: </label>
-              <Select className='select-tag-inadd' value={color} onChange={handleColorChange}>
+              <Select required className='select-tag-inadd' value={color} onChange={handleColorChange}>
                 {colors}
               </Select>
               {/* <input placeholder='Item Color...'></input> */}
@@ -94,7 +104,11 @@ const AddProducts = () => {
             <br />
             <div className='individuals'>
               <label>Price: </label>
-              <textarea placeholder='Item Price...'></textarea>
+              <input onChange={e => { setNewPrice(e.target.value); }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
+            </div>
+            <div className='all-display'>
+              <label style={{ marginRight: '10px' }}>Display In Collection: </label>
+              <input required type='checkbox' className='display-in-add' onClick={handleDisplay} style={{ backgroundColor: "white" }}></input>
             </div>
             <br />
             <br />
@@ -104,7 +118,7 @@ const AddProducts = () => {
               <label>Image 1: </label>
               <input style={{ width: "200px", height: '20px' }} type="file" onChange={onImage1Change} placeholder='Item Image 1...'></input>
               <div>
-                {image1 && <img style={{ height: '75px', width: '75px' }} src={image1} alt="preview" />}
+                {image1 && <img required style={{ height: '75px', width: '75px' }} src={image1} alt="preview" />}
               </div>
             </div>
             <br />
@@ -127,8 +141,9 @@ const AddProducts = () => {
         </div>
         <div>
           <label>Description: </label>
-          <textarea style={{ width: "100%", height: '150px', resize: 'none' }} placeholder='Item Description...'></textarea>
+          <textarea onChange={e => { setNewDescription(e.target.value); }} required style={{ width: "100%", height: '150px', resize: 'none' }} placeholder='Item Description...'></textarea>
         </div>
+        <button onClick={addProduct} className='add-button'>ADD PRODUCT</button>
       </div>
     </div>
   );
