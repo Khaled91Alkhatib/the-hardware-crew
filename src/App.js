@@ -103,20 +103,39 @@ function App() {
   };
 
   const addProduct = () => {
-    axios.post("http://localhost:5001/api/products", {
-      sku: newSku, name: newName, price: newPrice,
-      description: newDescription,
-      image1: image1, image2: image2, image3: image3,
-      color: color, category: category, display: display
-    })
-      .then(res => {
-        console.log('new product', res);
-        // if(res.data.errCode === 1001) {
-        //   toast(`${res.data.errMsg}`, { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' })
-        // }
-        // toast("New Product Added", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
+    if (newSku === "" ||
+      category === "" ||
+      color === "" ||
+      newName === "" ||
+      newDescription === "" ||
+      image1 === null ||
+      newPrice === ""
+    ) {
+      console.log('Not ');
+      toast("No", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
 
-      });
+    } else {
+
+      axios.post("http://localhost:5001/api/products", {
+        sku: newSku, name: newName, price: newPrice,
+        description: newDescription,
+        image1: image1, image2: image2, image3: image3,
+        color: color, category: category, display: display
+      })
+        .then(res => {
+          if(res.data.errCode){
+            console.log('already exists')
+          } else if(res.data.newProduct){
+            console.log('Successfully added')
+          }
+          // console.log('new product', res.data);
+          // if(res.data.errCode === 1001) {
+          //   toast(`${res.data.errMsg}`, { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' })
+          // }
+          // toast("New Product Added", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
+
+        });
+    }
   };
 
   // console.log('user', user)
