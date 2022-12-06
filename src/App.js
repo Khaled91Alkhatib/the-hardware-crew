@@ -111,6 +111,9 @@ function App() {
     })
       .then(res => {
         console.log('new product', res);
+        // if(res.data.errCode === 1001) {
+        //   toast(`${res.data.errMsg}`, { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' })
+        // }
         // toast("New Product Added", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
 
       });
