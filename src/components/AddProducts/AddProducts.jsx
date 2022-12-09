@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 import './AddProducts.scss';
 import { Select } from '@mui/material';
+import { ToastContainer } from 'react-toastify';
 
 const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDescription, setImage1, setImage2, setImage3, setColor, setCategory, setDisplay, category, color, image1, image2, image3 }) => {
   const { productSpecs } = useContext(GeneralContext);
@@ -104,7 +105,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
             <br />
             <div className='individuals'>
               <label>Price: </label>
-              <input onChange={e => { setNewPrice(e.target.value); }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
+              <input onChange={e => { setNewPrice(e.target.value * 100); }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
             </div>
             <div className='all-display'>
               <label style={{ marginRight: '10px' }}>Display In Collection: </label>
@@ -145,6 +146,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
         </div>
         <button onClick={addProduct} className='add-button'>ADD PRODUCT</button>
       </div>
+      <ToastContainer />
     </div>
   );
 };
