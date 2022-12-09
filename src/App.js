@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { Routes, Route } from 'react-router-dom';
 
 import GeneralContext from "./contexts/GeneralContext";
-import { Homepage, Navbar, AllProducts, SingleProduct, ShoppingCart, NoPage, AddProducts, Dashboard, AdminNav } from "./components/index";
+import { Homepage, Navbar, AllProducts, SingleProduct, ShoppingCart, NoPage, AddProducts, Dashboard, AdminNav, EditProducts } from "./components/index";
 import ThankYou from "./components/ShoppingCart/ThankYou";
 
 function App() {
@@ -75,17 +75,29 @@ function App() {
   }, [user]);
 
   const register = () => {
-    axios.post('http://localhost:5001/users', { username: registerUsername, password: registerPassword })
-      .then((res) => {
-        console.log(res);
-        toast("New User Registered", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
 
-        // This will empty input fields
-        let elements = document.getElementsByTagName("input");
-        for (let i = 0; i < elements.length; i++) {
-          elements[i].value = "";
-        }
-      });
+    if (registerUsername === "" || registerPassword === "") {
+      // console.log("can't be empty")
+      toast("Fields Can Not Be Empty!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
+    } else {
+      axios.post('http://localhost:5001/users', { username: registerUsername, password: registerPassword })
+        .then((res) => {
+          if (res.data.errCode) {
+            // console.log("username already taken");
+            toast(`${res.data.errMsg}`, { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
+          } else if (res.data.newUser) {
+            // console.log("user added successfully");
+            toast("User Added Successfully!", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
+          }
+          // console.log(res);
+
+          // This will empty input fields
+          let elements = document.getElementsByTagName("input");
+          for (let i = 0; i < elements.length; i++) {
+            elements[i].value = "";
+          }
+        });
+    }
   };
 
   const login = () => {
@@ -111,11 +123,9 @@ function App() {
       image1 === null ||
       newPrice === ""
     ) {
-      console.log('Not ');
-      toast("No", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
-
+      toast("Please Fill All Fields!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
+      // console.log('Not ');
     } else {
-
       axios.post("http://localhost:5001/api/products", {
         sku: newSku, name: newName, price: newPrice,
         description: newDescription,
@@ -123,17 +133,23 @@ function App() {
         color: color, category: category, display: display
       })
         .then(res => {
-          if(res.data.errCode){
-            console.log('already exists')
-          } else if(res.data.newProduct){
-            console.log('Successfully added')
+          if (res.data.errCode) {
+            // console.log('already exists');
+            toast("SKU already exists!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
+          } else if (res.data.newProduct) {
+            // console.log('Successfully added');
+            toast("Item Successfully added!", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
+            setNewSku("");
+            setNewName("");
+            setNewPrice("");
+            setNewDescription("");
+            setColor("");
+            setCategory("");
+            setDisplay(false);
+            setImage1(null);
+            setImage2(null);
+            setImage3(null);
           }
-          // console.log('new product', res.data);
-          // if(res.data.errCode === 1001) {
-          //   toast(`${res.data.errMsg}`, { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' })
-          // }
-          // toast("New Product Added", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
-
         });
     }
   };
@@ -183,6 +199,11 @@ function App() {
                 image2={image2}
                 image3={image3}
               />} />
+            :
+            <Route path="/dashboard" element={<Dashboard />} />}
+
+          {user.name ? <Route path="/dashboard/editproducts"
+            element={<EditProducts />} />
             :
             <Route path="/dashboard" element={<Dashboard />} />}
         </Routes>
