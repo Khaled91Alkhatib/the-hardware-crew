@@ -27,13 +27,17 @@ function App() {
   const [newName, setNewName] = useState("");
   const [newPrice, setNewPrice] = useState("");
   const [newDescription, setNewDescription] = useState("");
-  const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
-  const [image3, setImage3] = useState(null);
+  const [image1, setImage1] = useState("");
+  const [image2, setImage2] = useState("");
+  const [image3, setImage3] = useState("");
 
   const [color, setColor] = useState("");
   const [category, setCategory] = useState("");
   const [display, setDisplay] = useState(false);
+  const [url1, setUrl1] = useState("");
+  const [url2, setUrl2] = useState("");
+  const [url3, setUrl3] = useState("");
+
 
   useEffect(() => {
     axios.get('http://localhost:5001/api/products')
@@ -120,7 +124,12 @@ function App() {
       color === "" ||
       newName === "" ||
       newDescription === "" ||
-      image1 === null ||
+      url1 === "" ||
+      image1 === "" ||
+      image2 === "" ||
+      image3 === "" ||
+      url2 === "" ||
+      url3 === "" ||
       newPrice === ""
     ) {
       toast("Please Fill All Fields!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
@@ -129,7 +138,7 @@ function App() {
       axios.post("http://localhost:5001/api/products", {
         sku: newSku, name: newName, price: newPrice,
         description: newDescription,
-        image1: image1, image2: image2, image3: image3,
+        image1: url1, image2: url2, image3: url3,
         color: color, category: category, display: display
       })
         .then(res => {
@@ -139,16 +148,30 @@ function App() {
           } else if (res.data.newProduct) {
             // console.log('Successfully added');
             toast("Item Successfully added!", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
-            setNewSku("");
-            setNewName("");
-            setNewPrice("");
-            setNewDescription("");
+            console.log("sku", newSku);
+
+            let inputs = document.getElementsByTagName("input");
+            for (let i = 0; i < inputs.length; i++) {
+              inputs[i].value = "";
+            }
+            let textArea = document.getElementsByTagName("textarea");
+            for (let i = 0; i < textArea.length; i++) {
+              textArea[i].value = "";
+            }
+
+            // setNewSku("");
+            // setNewName("");
+            // setNewPrice("");
+            // setNewDescription("");
             setColor("");
             setCategory("");
             setDisplay(false);
-            setImage1(null);
-            setImage2(null);
-            setImage3(null);
+            // setImage1("");
+            // setImage2("");
+            // setImage3("");
+            setUrl1("");
+            setUrl2("");
+            setUrl3("");
           }
         });
     }
@@ -198,10 +221,15 @@ function App() {
                 image1={image1}
                 image2={image2}
                 image3={image3}
+                url1={url1}
+                setUrl1={setUrl1}
+                url2={url2}
+                setUrl2={setUrl2}
+                url3={url3}
+                setUrl3={setUrl3}
               />} />
             :
             <Route path="/dashboard" element={<Dashboard />} />}
-
           {user.name ? <Route path="/dashboard/editproducts"
             element={<EditProducts />} />
             :
