@@ -89,3 +89,25 @@
     scale: 1.1;
   }
 }
+
+.required-fields {
+  color: red;
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+.upload-images {
+  border: none;
+  border-radius: 8px;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+
+  &:hover {
+    cursor: pointer;
+    scale: 1.1;
+  }
+}
