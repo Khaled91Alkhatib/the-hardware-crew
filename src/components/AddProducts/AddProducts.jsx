@@ -6,38 +6,61 @@ import './AddProducts.scss';
 import { Select } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 
-const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDescription, setImage1, setImage2, setImage3, setColor, setCategory, setDisplay, category, color, image1, image2, image3 }) => {
+const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDescription, setImage1, setImage2, setImage3, setColor, setCategory, setDisplay, category, color, image1, image2, image3, url1, setUrl1, url2, setUrl2, url3, setUrl3 }) => {
   const { productSpecs } = useContext(GeneralContext);
-  console.log('specs', productSpecs);
 
-  // const [image1, setImage1] = useState(null);
-  // const [image2, setImage2] = useState(null);
-  // const [image3, setImage3] = useState(null);
+  const uploadImage1 = () => {
+    const data = new FormData();
+    data.append("file", image1);
+    data.append("upload_preset", "TheHardwareCrew");
+    data.append("cloud_name", "khaled-cloud");
 
-  // const [color, setColor] = useState("");
-  // const [category, setCategory] = useState("");
-
-  // const [newSku, setNewSku] = useState("");
-  // const [newName, setNewName] = useState("");
-  // const [newPrice, setNewPrice] = useState("");
-  // const [newDescription, setNewDescription] = useState("");
-
-  const onImage1Change = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage1(URL.createObjectURL(event.target.files[0]));
-    }
+    fetch(" https://api.cloudinary.com/v1_1/khaled-cloud/image/upload", {
+      method: "post",
+      body: data
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        console.log("cloud images", data);
+        setUrl1(data.secure_url);
+      })
+      .catch(err => console.log(err));
   };
 
-  const onImage2Change = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage2(URL.createObjectURL(event.target.files[0]));
-    }
+  const uploadImage2 = () => {
+    const data = new FormData();
+    data.append("file", image2);
+    data.append("upload_preset", "TheHardwareCrew");
+    data.append("cloud_name", "khaled-cloud");
+
+    fetch(" https://api.cloudinary.com/v1_1/khaled-cloud/image/upload", {
+      method: "post",
+      body: data
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        console.log("cloud images", data);
+        setUrl2(data.secure_url);
+      })
+      .catch(err => console.log(err));
   };
 
-  const onImage3Change = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage3(URL.createObjectURL(event.target.files[0]));
-    }
+  const uploadImage3 = () => {
+    const data = new FormData();
+    data.append("file", image3);
+    data.append("upload_preset", "TheHardwareCrew");
+    data.append("cloud_name", "khaled-cloud");
+
+    fetch(" https://api.cloudinary.com/v1_1/khaled-cloud/image/upload", {
+      method: "post",
+      body: data
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        console.log("cloud images", data);
+        setUrl3(data.secure_url);
+      })
+      .catch(err => console.log(err));
   };
 
   const handleColorChange = e => {
@@ -105,7 +128,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
             <br />
             <div className='individuals'>
               <label>Price: </label>
-              <input onChange={e => { setNewPrice(e.target.value * 100); }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
+              <input onChange={e => { setNewPrice(e.target.value * 100) }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
             </div>
             <div className='all-display'>
               <label style={{ marginRight: '10px' }}>Display In Collection: </label>
@@ -117,33 +140,35 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
           <div className='new-images'>
             <div>
               <label>Image 1: </label>
-              <input style={{ width: "200px", height: '20px' }} type="file" onChange={onImage1Change} placeholder='Item Image 1...'></input>
+              <input accept={'image/*'} style={{ width: "200px", height: '20px' }} type="file" onChange={(e) => setImage1(e.target.files[0])} placeholder='Item Image 1...'></input>
               <div>
-                {image1 && <img required style={{ height: '75px', width: '75px' }} src={image1} alt="preview" />}
+                {url1 && <img required style={{ height: '75px', width: '75px' }} src={url1} alt="preview" />}
               </div>
             </div>
             <br />
             <div>
               <label>Image 2: </label>
-              <input style={{ width: "200px", height: '20px' }} type="file" onChange={onImage2Change} placeholder='Item Image 2...'></input>
+              <input style={{ width: "200px", height: '20px' }} type="file" onChange={(e) => setImage2(e.target.files[0])} placeholder='Item Image 2...'></input>
               <div>
-                {image2 && <img style={{ height: '75px', width: '75px' }} src={image2} alt="preview" />}
+                {url2 && <img style={{ height: '75px', width: '75px' }} src={url2} alt="preview" />}
               </div>
             </div>
             <br />
             <div>
               <label>Image 3: </label>
-              <input style={{ width: "200px", height: '20px' }} type="file" onChange={onImage3Change} placeholder='Item Image 3...'></input>
+              <input style={{ width: "200px", height: '20px' }} type="file" onChange={(e) => setImage3(e.target.files[0])} placeholder='Item Image 3...'></input>
               <div>
-                {image3 && <img style={{ height: '75px', width: '75px' }} src={image3} alt="preview" />}
+                {url3 && <img style={{ height: '75px', width: '75px' }} src={url3} alt="preview" />}
               </div>
             </div>
+            <button disabled={!image1 || !image2 || !image3} className='upload-images' onClick={(e) => { uploadImage1(); uploadImage2(); uploadImage3(); }}>UPLOAD IMAGES</button>
           </div>
         </div>
         <div>
           <label>Description: </label>
           <textarea onChange={e => { setNewDescription(e.target.value); }} required style={{ width: "100%", height: '150px', resize: 'none' }} placeholder='Item Description...'></textarea>
         </div>
+        <div className='required-fields'>All Fields Are Required!</div>
         <button onClick={addProduct} className='add-button'>ADD PRODUCT</button>
       </div>
       <ToastContainer />
