@@ -1,3 +1,5 @@
+// This scss file serves both AddProducts.jsx and EditProducts.jsx
+
 .add-product {
   padding-top: 100px;
   background-color: black;
@@ -96,15 +98,42 @@
   text-decoration: underline;
 }
 
-.upload-images {
+.upload-images,
+.find-button,
+.reset-button {
   border: none;
   border-radius: 8px;
-  background-color: green;
+  // background-color: green;
   color: white;
   font-weight: bold;
-  font-size: 10px;
-  padding: 0.5em 1em;
+  // font-size: 10px;
+  // padding: 0.5em 1em;
   margin-top: 1em;
+
+  &.upload-images {
+    padding: 0.5em 1em;
+    font-size: 10px;
+    background-color: green;
+  }
+
+  &.find-button {
+    height: 30px;
+    padding: 0 2em;
+    margin-left: 10px;
+    // padding: 1em 2em;
+    font-size: 13px;
+    background-color: green;
+  }
+
+  &.reset-button {
+    height: 30px;
+    padding: 0 2em;
+    margin-left: 10px;
+    // padding: 1em 2em;
+    font-size: 13px;
+
+    background-color: red;
+  }
 
   &:hover {
     cursor: pointer;
