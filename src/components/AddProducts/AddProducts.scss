@@ -1,4 +1,4 @@
-// This scss file serves both AddProducts.jsx and EditProducts.jsx
+// This scss file serves AddProducts.jsx, EditProducts.jsx and AdminProducts.jsx
 
 .add-product {
   padding-top: 100px;
@@ -44,6 +44,7 @@
       display: none;
       margin: 0;
     }
+
     .select-tag-inadd {
       background-color: rgb(171, 171, 171);
       height: 30px;
@@ -139,4 +140,9 @@
     cursor: pointer;
     scale: 1.1;
   }
+}
+
+.data-images-edit {
+  display: flex;
+  justify-content: space-between;
 }
