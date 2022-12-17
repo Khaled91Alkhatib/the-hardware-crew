@@ -21,7 +21,7 @@ const EditProducts = () => {
       axios.get(`http://localhost:5001/api/products/${productFound.id}`)
         .then((res) => {
           setProduct((prev) => res.data.product);
-          console.log(res.data.product);
+          // console.log(res.data.product);
         })
         .catch(error => {
           console.log(error.message);
@@ -46,12 +46,12 @@ const EditProducts = () => {
         <br />
         <div>
           <label>SKU: </label>
-          <input value={sku} className='input' onChange={(event) => setSku(event.target.value)} required placeholder='SKU...'></input>
+          <input disabled={Object.keys(product).length !== 0} value={sku} className='input' onChange={(event) => setSku(event.target.value)} required placeholder='SKU...'></input>
           <button className='find-button' onClick={findProduct}>Search</button>
           <button className='reset-button' onClick={reset}>Reset</button>
         </div>
         {product.sku &&
-          <AdminProduct />
+          <AdminProduct product={product} setProduct={setProduct} />
         }
       </div>
       <ToastContainer />
