@@ -158,6 +158,7 @@ const AdminProduct = ({ product, setProduct }) => {
         </textarea>
       </div>
 
+      <button>Save Changes</button>
     </div>
   );
 };
