@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 import './AddProducts.scss';
 import { Select } from '@mui/material';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDescription, setImage1, setImage2, setImage3, setColor, setCategory, setDisplay, category, color, image1, image2, image3, url1, setUrl1, url2, setUrl2, url3, setUrl3 }) => {
   const { productSpecs } = useContext(GeneralContext);
@@ -90,6 +90,16 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
     }
   };
 
+  const uploadButton = () => {
+    if (!image1 || !image2 || !image3) {
+      toast("Choose Three Images Please!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
+    } else {
+      uploadImage1();
+      uploadImage2();
+      uploadImage3();
+    }
+  };
+
   return (
     <div className='add-product'>
       <div className='add-product-container'>
@@ -128,7 +138,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
             <br />
             <div className='individuals'>
               <label>Price: </label>
-              <input onChange={e => { setNewPrice(e.target.value * 100) }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
+              <input onChange={e => { setNewPrice(e.target.value * 100); }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
             </div>
             <div className='all-display'>
               <label style={{ marginRight: '10px' }}>Display In Collection: </label>
@@ -161,7 +171,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
                 {url3 && <img style={{ height: '75px', width: '75px' }} src={url3} alt="preview" />}
               </div>
             </div>
-            <button disabled={!image1 || !image2 || !image3} className='upload-images' onClick={(e) => { uploadImage1(); uploadImage2(); uploadImage3(); }}>UPLOAD IMAGES</button>
+            <button className='upload-images' onClick={uploadButton}>UPLOAD IMAGES</button>
           </div>
         </div>
         <div>
