@@ -158,7 +158,9 @@ const AdminProduct = ({ product, setProduct }) => {
         </textarea>
       </div>
 
-      <button>Save Changes</button>
+      <div className='general-save-button'>
+        <button className='save-button'>SAVE CHANGES</button>
+      </div>
     </div>
   );
 };
