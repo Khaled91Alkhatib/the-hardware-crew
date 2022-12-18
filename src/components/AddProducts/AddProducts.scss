@@ -146,3 +146,24 @@
   display: flex;
   justify-content: space-between;
 }
+
+.general-save-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .save-button {
+    width: 50%;
+    margin: 10px auto 0 auto;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: green;
+    padding: 1em;
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.1;
+    }
+  }
+}
