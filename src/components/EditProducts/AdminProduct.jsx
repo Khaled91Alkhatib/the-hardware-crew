@@ -5,8 +5,8 @@ import GeneralContext from '../../contexts/GeneralContext';
 import '../AddProducts/AddProducts.scss';
 
 
-const AdminProduct = ({ product, setProduct }) => {
-  console.log('product', product);
+const AdminProduct = ({ product, setProduct, editProduct }) => {
+  // console.log('product', product);
   const { productSpecs } = useContext(GeneralContext);
 
   const handleChange = (event) => {
@@ -159,7 +159,7 @@ const AdminProduct = ({ product, setProduct }) => {
       </div>
 
       <div className='general-save-button'>
-        <button className='save-button'>SAVE CHANGES</button>
+        <button onClick={editProduct} className='save-button'>SAVE CHANGES</button>
       </div>
     </div>
   );
