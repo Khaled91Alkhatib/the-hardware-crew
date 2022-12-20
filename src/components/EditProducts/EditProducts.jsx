@@ -8,7 +8,7 @@ import "../AddProducts/AddProducts.scss";
 import { toast, ToastContainer } from 'react-toastify';
 import AdminProduct from './AdminProduct';
 
-const EditProducts = () => {
+const EditProducts = ({ editProduct }) => {
   const { products } = useContext(GeneralContext);
   const [sku, setSku] = useState("");
   const [product, setProduct] = useState({});
@@ -51,7 +51,7 @@ const EditProducts = () => {
           <button className='reset-button' onClick={reset}>Reset</button>
         </div>
         {product.sku &&
-          <AdminProduct product={product} setProduct={setProduct} />
+          <AdminProduct editProduct={editProduct} product={product} setProduct={setProduct} />
         }
       </div>
       <ToastContainer />
