@@ -177,6 +177,30 @@ function App() {
     }
   };
 
+  const editProduct = (updateProduct) => {
+    axios.put(`http://localhost:5001/api/products/${updateProduct.id}`, { product: updateProduct })
+      .then(res => {
+        // if (res.data.errCode === 1002) {
+        //   console.log('error');
+        // } else {
+        const updatedProduct = res.data;
+        console.log(updatedProduct);
+        const updatedProducts = products.map(product => {
+          if (product.id === updatedProduct.id) {
+            return updatedProduct;
+          }
+          console.log(product);
+          return product;
+        });
+        setProducts([...updatedProducts]);
+        console.log(`product edited`);
+        // }
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
   // console.log('user', user)
   return (
     <div>
@@ -231,7 +255,7 @@ function App() {
             :
             <Route path="/dashboard" element={<Dashboard />} />}
           {user.name ? <Route path="/dashboard/editproducts"
-            element={<EditProducts />} />
+            element={<EditProducts editProduct={editProduct} />} />
             :
             <Route path="/dashboard" element={<Dashboard />} />}
         </Routes>
