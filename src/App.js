@@ -178,6 +178,7 @@ function App() {
   };
 
   const editProduct = (updateProduct) => {
+    // console.log('update', updateProduct)
     axios.put(`http://localhost:5001/api/products/${updateProduct.id}`, { product: updateProduct })
       .then(res => {
         // if (res.data.errCode === 1002) {
