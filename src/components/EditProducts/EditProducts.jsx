@@ -20,7 +20,8 @@ const EditProducts = ({ editProduct }) => {
     if (productFound) {
       axios.get(`http://localhost:5001/api/products/${productFound.id}`)
         .then((res) => {
-          setProduct((prev) => res.data.product);
+          const newProduct = res.data.product;
+          setProduct({ ...newProduct, price: newProduct.price / 100 });
           // console.log(res.data.product);
         })
         .catch(error => {
