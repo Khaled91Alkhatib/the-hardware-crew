@@ -138,7 +138,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
             <br />
             <div className='individuals'>
               <label>Price: </label>
-              <input onChange={e => { setNewPrice(e.target.value * 100); }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
+              <input onChange={e => { setNewPrice(e.target.value); }} className='input new-price' onWheel={(e) => e.target.blur()} required type='number' placeholder='Item Price...'></input>
             </div>
             <div className='all-display'>
               <label style={{ marginRight: '10px' }}>Display In Collection: </label>
