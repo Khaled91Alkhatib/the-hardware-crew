@@ -6,6 +6,7 @@ import Product from '../Product/Product';
 
 import { getProducts } from '../../helpers/getProducts';
 import './AllProducts.scss';
+// import LinearProgress from '@mui/material/LinearProgress';
 
 const AllProducts = () => {
   const { products } = useContext(GeneralContext);
@@ -27,9 +28,14 @@ const AllProducts = () => {
 
   return (
     <div className='allproducts-main-image'>
-      <div className='all-products'>
-        {categoryBasedProducts}
-      </div>
+      <div className='all-products'>{categoryBasedProducts}</div>
+
+      {/* {products.length === 0 && (
+        <div>
+          <LinearProgress color="secondary" />
+        </div>
+      )} */}
+
     </div>
   );
 };
