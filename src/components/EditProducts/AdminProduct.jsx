@@ -159,7 +159,7 @@ const AdminProduct = ({ product, setProduct, editProduct }) => {
       </div>
 
       <div className='general-save-button'>
-        <button onClick={editProduct} className='save-button'>SAVE CHANGES</button>
+        <button onClick={() => { editProduct(product); }} className='save-button'>SAVE CHANGES</button>
       </div>
     </div>
   );
