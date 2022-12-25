@@ -179,27 +179,34 @@ function App() {
 
   const editProduct = (updateProduct) => {
     // console.log('update', updateProduct)
-    axios.put(`http://localhost:5001/api/products/${updateProduct.id}`, { product: updateProduct })
-      .then(res => {
-        // if (res.data.errCode === 1002) {
-        //   console.log('error');
-        // } else {
-        const updatedProduct = res.data;
-        console.log(updatedProduct);
-        const updatedProducts = products.map(product => {
-          if (product.id === updatedProduct.id) {
-            return updatedProduct;
-          }
-          console.log(product);
-          return product;
+
+    if (updateProduct.name === "" || updateProduct.description === "" || updateProduct.price === "") {
+      toast("Please Fill All Fields!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
+    } else {
+
+      axios.put(`http://localhost:5001/api/products/${updateProduct.id}`, { product: updateProduct })
+        .then(res => {
+          // if (res.data.errCode === 1002) {
+          //   console.log('error');
+          // } else {
+          const updatedProduct = res.data;
+          console.log(updatedProduct);
+          const updatedProducts = products.map(product => {
+            if (product.id === updatedProduct.id) {
+              return updatedProduct;
+            }
+            console.log(product);
+            return product;
+          });
+          setProducts([...updatedProducts]);
+          console.log(`product edited`);
+          toast(`Product With SKU${updateProduct.sku} Successfully Edited!`, { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
+          // }
+        })
+        .catch(error => {
+          console.log(error.message);
         });
-        setProducts([...updatedProducts]);
-        console.log(`product edited`);
-        // }
-      })
-      .catch(error => {
-        console.log(error.message);
-      });
+    }
   };
 
   // console.log('user', user)
