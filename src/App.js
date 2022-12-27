@@ -158,17 +158,9 @@ function App() {
             for (let i = 0; i < textArea.length; i++) {
               textArea[i].value = "";
             }
-
-            // setNewSku("");
-            // setNewName("");
-            // setNewPrice("");
-            // setNewDescription("");
             setColor("");
             setCategory("");
             setDisplay(false);
-            // setImage1("");
-            // setImage2("");
-            // setImage3("");
             setUrl1("");
             setUrl2("");
             setUrl3("");

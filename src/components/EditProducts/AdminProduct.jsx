@@ -111,11 +111,9 @@ const AdminProduct = ({ product, setProduct, editProduct }) => {
               required
               name='display'
               checked={product.display}
-              // value={product.display}
               type='checkbox'
               className='display-in-add'
               onChange={handleCheckBoxChange}
-              // onClick={handleDisplay}
               style={{ backgroundColor: "white" }}>
             </input>
           </div>

@@ -125,7 +125,6 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
               <Select required className='select-tag-inadd' value={category} onChange={handleCategoryChange}>
                 {categories}
               </Select>
-              {/* <input placeholder='Item Category...'></input> */}
             </div>
             <br />
             <div>
@@ -133,7 +132,6 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
               <Select required className='select-tag-inadd' value={color} onChange={handleColorChange}>
                 {colors}
               </Select>
-              {/* <input placeholder='Item Color...'></input> */}
             </div>
             <br />
             <div className='individuals'>
