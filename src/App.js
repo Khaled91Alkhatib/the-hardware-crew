@@ -191,7 +191,7 @@ function App() {
             return product;
           });
           setProducts([...updatedProducts]);
-          console.log(`product edited`);
+          // console.log(`product edited`);
           toast(`Product With SKU${updateProduct.sku} Successfully Edited!`, { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
           // }
         })
