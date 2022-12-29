@@ -181,15 +181,18 @@ function App() {
           // if (res.data.errCode === 1002) {
           //   console.log('error');
           // } else {
-          const updatedProduct = res.data;
-          console.log(updatedProduct);
-          const updatedProducts = products.map(product => {
-            if (product.id === updatedProduct.id) {
-              return updatedProduct;
-            }
-            console.log(product);
-            return product;
-          });
+          const updatedProducts = res.data;
+          // console.log(updatedProducts);
+
+          // We used getAllProducts in server, if we used getProductById, we will need to map like below.
+          // const updatedProducts = products.map(product => {
+          //   if (product.id === updatedProduct.id) {
+          //     return updatedProduct;
+          //   }
+          //   console.log(product);
+          //   return product;
+          // });
+
           setProducts([...updatedProducts]);
           // console.log(`product edited`);
           toast(`Product With SKU${updateProduct.sku} Successfully Edited!`, { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
@@ -201,6 +204,7 @@ function App() {
     }
   };
 
+  console.log("today product", products);
   // console.log('user', user)
   return (
     <div>
