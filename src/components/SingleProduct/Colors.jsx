@@ -5,7 +5,7 @@ import './Colors.scss';
 const Colors = ({ allColors, colorHandler }) => {
 
   const colorsArray = allColors.map(product => {
-    console.log('colors', product);
+    // console.log('colors', product);
     let colorsClass = "";
     if (product.selected) colorsClass = "color-selected";
     return (

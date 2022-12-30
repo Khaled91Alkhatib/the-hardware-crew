@@ -107,7 +107,7 @@ function App() {
   const login = () => {
     axios.post('http://localhost:5001/users/login', { username: username, password: password })
       .then((res) => {
-        console.log(res.data.rows[0]);
+        // console.log(res.data.rows[0]);
         const loggedUser = res.data.rows[0];
         if (res.data.rows.length === 0) {
           toast("Invalid Credentials!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
@@ -148,7 +148,7 @@ function App() {
           } else if (res.data.newProduct) {
             // console.log('Successfully added');
             toast("Item Successfully added!", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
-            console.log("sku", newSku);
+            // console.log("sku", newSku);
 
             let inputs = document.getElementsByTagName("input");
             for (let i = 0; i < inputs.length; i++) {
@@ -204,7 +204,7 @@ function App() {
     }
   };
 
-  console.log("today product", products);
+  // console.log("today product", products);
   // console.log('user', user)
   return (
     <div>

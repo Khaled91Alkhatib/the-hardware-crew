@@ -20,7 +20,7 @@ const payButton = ({ cart, setCart }) => {
   async function handleCheckout() {
     await axios.post("http://localhost:5001/create-checkout-session", { cart })
       .then((res) => {
-        console.log("pay", res);
+        // console.log("pay", res);
         if (res.data.url) {
           window.location.href = res.data.url;
         }

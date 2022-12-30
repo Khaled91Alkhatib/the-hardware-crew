@@ -10,7 +10,7 @@ import './AllProducts.scss';
 
 const AllProducts = () => {
   const { products } = useContext(GeneralContext);
-  console.log("products", products);
+  // console.log("products", products);
   const [selection, setSelection] = useState([]);
   const category = useParams().id;
 

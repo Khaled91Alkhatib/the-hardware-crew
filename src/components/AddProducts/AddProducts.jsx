@@ -21,7 +21,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log("cloud images", data);
+        // console.log("cloud images", data);
         setUrl1(data.secure_url);
       })
       .catch(err => console.log(err));
@@ -39,7 +39,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log("cloud images", data);
+        // console.log("cloud images", data);
         setUrl2(data.secure_url);
       })
       .catch(err => console.log(err));
@@ -57,7 +57,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log("cloud images", data);
+        // console.log("cloud images", data);
         setUrl3(data.secure_url);
       })
       .catch(err => console.log(err));

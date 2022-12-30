@@ -12,10 +12,10 @@ library.add(faTrashCan, faSquarePlus, faSquareMinus);
 
 const ShoppingCart = () => {
   const { cart, setCart } = useContext(GeneralContext);
-  console.log('cart', cart);
+  // console.log('cart', cart);
 
   const cartItemNumber = cart.reduce((pre, cur) => pre + cur.quantity, 0);
-  console.log(cartItemNumber);
+  // console.log(cartItemNumber);
 
   const onRemoveClick = (sku) => {
     setCart((pre) => pre.filter((item) => !(sku === item.sku)));

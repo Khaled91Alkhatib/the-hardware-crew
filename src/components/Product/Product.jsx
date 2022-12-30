@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './Product.scss';
 
 const Product = ({ product }) => {
-  console.log("khaled", product);
+  // console.log("khaled", product);
 
   return (
     <div className='main-in-product'>

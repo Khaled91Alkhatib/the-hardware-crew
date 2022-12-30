@@ -40,7 +40,7 @@ const SingleProduct = () => {
     axios.get(`http://localhost:5001/api/products/${id}`)
       .then((res) => {
         setProduct(prev => res.data.product);
-        console.log('first', res.data.product);
+        // console.log('first', res.data.product);
       });
   };
 
@@ -58,7 +58,7 @@ const SingleProduct = () => {
     const rightImage = images.pop();
     setImages(prev => [rightImage, ...prev]);
   };
-  console.log("single product", product);
+  // console.log("single product", product);
 
   const colorHandler = (id) => {
     setId(id);
