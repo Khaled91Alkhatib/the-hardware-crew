@@ -100,6 +100,8 @@ const SingleProduct = () => {
         <div className='product-texts'>
           <div className='product-name'>{product.name}</div>
           <br />
+          <div>SKU: {product.sku}</div>
+          <br />
           <div className='price'>${(product.price / 100).toFixed(2)}</div>
           <br />
           <div>Color: {product.color}</div>
