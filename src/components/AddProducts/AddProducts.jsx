@@ -13,9 +13,9 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
     const data = new FormData();
     data.append("file", image1);
     data.append("upload_preset", "TheHardwareCrew");
-    data.append("cloud_name", "khaled-cloud");
+    data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
 
-    fetch(" https://api.cloudinary.com/v1_1/khaled-cloud/image/upload", {
+    fetch(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`, {
       method: "post",
       body: data
     })
@@ -31,9 +31,9 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
     const data = new FormData();
     data.append("file", image2);
     data.append("upload_preset", "TheHardwareCrew");
-    data.append("cloud_name", "khaled-cloud");
+    data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
 
-    fetch(" https://api.cloudinary.com/v1_1/khaled-cloud/image/upload", {
+    fetch(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`, {
       method: "post",
       body: data
     })
@@ -49,9 +49,9 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
     const data = new FormData();
     data.append("file", image3);
     data.append("upload_preset", "TheHardwareCrew");
-    data.append("cloud_name", "khaled-cloud");
+    data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
 
-    fetch(" https://api.cloudinary.com/v1_1/khaled-cloud/image/upload", {
+    fetch(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`, {
       method: "post",
       body: data
     })
