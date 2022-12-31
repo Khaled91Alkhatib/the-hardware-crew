@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import './PayButton.scss'
+import GeneralContext from '../../contexts/GeneralContext';
 
-const payButton = ({ cart, setCart }) => {
+const PayButton = ({ cart, setCart }) => {
+  const { siteUrl } = useContext(GeneralContext)
   // async function handleCheckout() {
   //   let response;
   //   try {
@@ -18,7 +20,7 @@ const payButton = ({ cart, setCart }) => {
   //   }
   // }
   async function handleCheckout() {
-    await axios.post("http://localhost:5001/create-checkout-session", { cart })
+    await axios.post(`${siteUrl}/create-checkout-session`, { cart })
       .then((res) => {
         // console.log("pay", res);
         if (res.data.url) {
@@ -36,4 +38,4 @@ const payButton = ({ cart, setCart }) => {
   );
 };
 
-export default payButton;
+export default PayButton;

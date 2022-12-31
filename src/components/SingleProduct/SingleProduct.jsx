@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SingleProduct = () => {
-  const { products, cart, setCart } = useContext(GeneralContext);
+  const { products, cart, setCart, siteUrl } = useContext(GeneralContext);
   const [id, setId] = useState(Number(useParams().id));
   const [product, setProduct] = useState({});
   const [images, setImages] = useState([]);
@@ -37,7 +37,7 @@ const SingleProduct = () => {
   }, [products, product, id]);
 
   const getProductById = (id) => {
-    axios.get(`http://localhost:5001/api/products/${id}`)
+    axios.get(`${siteUrl}/api/products/${id}`)
       .then((res) => {
         setProduct(prev => res.data.product);
         // console.log('first', res.data.product);

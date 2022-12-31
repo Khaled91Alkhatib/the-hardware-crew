@@ -9,7 +9,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import AdminProduct from './AdminProduct';
 
 const EditProducts = ({ editProduct }) => {
-  const { products } = useContext(GeneralContext);
+  const { products, siteUrl } = useContext(GeneralContext);
   const [sku, setSku] = useState("");
   const [product, setProduct] = useState({});
   // console.log(products);
@@ -18,7 +18,7 @@ const EditProducts = ({ editProduct }) => {
     event.preventDefault();
     const productFound = getProductBySku(products, sku);
     if (productFound) {
-      axios.get(`http://localhost:5001/api/products/${productFound.id}`)
+      axios.get(`${siteUrl}/api/products/${productFound.id}`)
         .then((res) => {
           const newProduct = res.data.product;
           setProduct({ ...newProduct, price: newProduct.price / 100 });
