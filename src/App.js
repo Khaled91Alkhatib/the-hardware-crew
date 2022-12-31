@@ -42,12 +42,12 @@ function App() {
 
   useEffect(() => {
     if (process.env.REACT_APP_API_BASE_URL) {
-      setSiteUrl("https://the-hardware-crew-api-production.up.railway.app");
+      setSiteUrl("http://localhost:5001");
     } else {
       setSiteUrl("http://localhost:5001");
     }
   }, []);
-
+  // console.log(siteUrl)
   useEffect(() => {
     axios.get(`${siteUrl}/api/products`)
       .then((res) => {
@@ -151,11 +151,15 @@ function App() {
         color: color, category: category, display: display
       })
         .then(res => {
+          // console.log(res.data)
           if (res.data.errCode) {
             // console.log('already exists');
             toast("SKU already exists!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
-          } else if (res.data.newProduct) {
+          } else if (res.data.newProducts) {
+            // console.log('new products',res.data.newProducts)
             // console.log('Successfully added');
+            const addedProducts = res.data.newProducts;
+            setProducts([...addedProducts]);
             toast("Item Successfully added!", { position: "top-right", type: 'success', autoClose: 1500, theme: 'dark' });
             // console.log("sku", newSku);
 
