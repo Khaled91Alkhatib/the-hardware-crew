@@ -38,17 +38,26 @@ function App() {
   const [url2, setUrl2] = useState("");
   const [url3, setUrl3] = useState("");
 
+  const [siteUrl, setSiteUrl] = useState("https://the-hardware-crew-api-production.up.railway.app");
 
   useEffect(() => {
-    axios.get('http://localhost:5001/api/products')
+    if (process.env.REACT_APP_API_BASE_URL) {
+      setSiteUrl("https://the-hardware-crew-api-production.up.railway.app");
+    } else {
+      setSiteUrl("http://localhost:5001");
+    }
+  }, []);
+
+  useEffect(() => {
+    axios.get(`${siteUrl}/api/products`)
       .then((res) => {
         setProducts(prev => res.data.products);
         // console.log(res.data.products);
       });
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
-    axios.get('http://localhost:5001/specifications')
+    axios.get(`${siteUrl}/specifications`)
       .then((res) => {
         const categories = res.data.categories;
         const colors = res.data.colors;
@@ -56,7 +65,7 @@ function App() {
         // console.log(colors)
         // console.log("now", res)
       });
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem('cart-info'));
@@ -84,7 +93,7 @@ function App() {
       // console.log("can't be empty")
       toast("Fields Can Not Be Empty!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
     } else {
-      axios.post('http://localhost:5001/users', { username: registerUsername, password: registerPassword })
+      axios.post(`${siteUrl}/users`, { username: registerUsername, password: registerPassword })
         .then((res) => {
           if (res.data.errCode) {
             // console.log("username already taken");
@@ -105,7 +114,7 @@ function App() {
   };
 
   const login = () => {
-    axios.post('http://localhost:5001/users/login', { username: username, password: password })
+    axios.post(`${siteUrl}/users/login`, { username: username, password: password })
       .then((res) => {
         // console.log(res.data.rows[0]);
         const loggedUser = res.data.rows[0];
@@ -135,7 +144,7 @@ function App() {
       toast("Please Fill All Fields!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
       // console.log('Not ');
     } else {
-      axios.post("http://localhost:5001/api/products", {
+      axios.post(`${siteUrl}/api/products`, {
         sku: newSku, name: newName, price: newPrice,
         description: newDescription,
         image1: url1, image2: url2, image3: url3,
@@ -176,7 +185,7 @@ function App() {
       toast("Please Fill All Fields!", { position: "top-right", type: 'error', autoClose: 1500, theme: 'dark' });
     } else {
 
-      axios.put(`http://localhost:5001/api/products/${updateProduct.id}`, { product: updateProduct })
+      axios.put(`${siteUrl}/api/products/${updateProduct.id}`, { product: updateProduct })
         .then(res => {
           // if (res.data.errCode === 1002) {
           //   console.log('error');
@@ -208,7 +217,7 @@ function App() {
   // console.log('user', user)
   return (
     <div>
-      <GeneralContext.Provider value={{ products, productSpecs, cart, setCart }} >
+      <GeneralContext.Provider value={{ products, productSpecs, cart, setCart, siteUrl }} >
         {user.name ? <AdminNav user={user} setUser={setUser} /> : <Navbar />}
         {/* <Navbar /> */}
         <Routes>
