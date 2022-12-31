@@ -42,7 +42,7 @@ function App() {
 
   useEffect(() => {
     if (process.env.REACT_APP_API_BASE_URL) {
-      setSiteUrl("http://localhost:5001");
+      setSiteUrl("https://the-hardware-crew-api-production.up.railway.app");
     } else {
       setSiteUrl("http://localhost:5001");
     }
