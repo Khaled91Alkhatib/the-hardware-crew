@@ -29,13 +29,6 @@ const AllProducts = () => {
   return (
     <div className='allproducts-main-image'>
       <div className='all-products'>{categoryBasedProducts}</div>
-
-      {/* {products.length === 0 && (
-        <div>
-          <LinearProgress color="secondary" />
-        </div>
-      )} */}
-
     </div>
   );
 };
