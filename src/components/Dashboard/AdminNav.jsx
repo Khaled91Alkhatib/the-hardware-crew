@@ -21,16 +21,11 @@ const AdminNav = ({ user, setUser }) => {
     <div>
       <button><NavLink className='collection' to="/dashboard/addproducts">Add Products</NavLink></button>
       <button><NavLink className='collection' to="/dashboard/editproducts">Edit Products</NavLink></button>
-      {/* <button><NavLink className='collection' to="/products/headsets">Headsets</NavLink></button> */}
     </div>
     <div>
       <button onClick={logout} className='cart'><NavLink to="/shoppingcart"><FontAwesomeIcon icon="fa-solid fa-door-open" size='lg' color='red' /><span style={{fontSize:'13px'}}> Log Out</span></NavLink></button>
     </div>
   </div>
-    // <>
-    // <div>AdminNav</div>
-    // <button onClick={logout}>Logout</button>
-    // </>
   )
 }
 

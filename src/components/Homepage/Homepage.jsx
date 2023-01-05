@@ -8,7 +8,6 @@ const Homepage = () => {
   return (
     <div className='homepage-image'>
       <div className='homepage-title'>Enhance Your Computing Experience</div>
-      {/* <img src={homepageImage} alt="homepage" /> */}
       <div className='home-img'></div>
     </div>
   );
