@@ -5,20 +5,7 @@ import GeneralContext from '../../contexts/GeneralContext';
 
 const PayButton = ({ cart, setCart }) => {
   const { siteUrl } = useContext(GeneralContext)
-  // async function handleCheckout() {
-  //   let response;
-  //   try {
-  //     response = await axios.post("http://localhost:5001/api/stripe/create-checkout-session", { cart });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   if (response.data.url) {
-  //     window.location.href = response.data.url;
-  //   }
-  //   if (response.data.status === 'success') {
-  //     setCart([])
-  //   }
-  // }
+
   async function handleCheckout() {
     await axios.post(`${siteUrl}/create-checkout-session`, { cart })
       .then((res) => {
