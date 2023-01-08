@@ -16,6 +16,16 @@ Stripe checkout was used in this app to guide customers to the final page upon p
 <br />
 The database used is ElephantSQL and the backend was implemented using node and deployed using Railway. React is responsible for the front end and Netlify was used to deploy it.
 
+## Screenshots
+![Homepage](https://github.com/Khaled91Alkhatib/the-hardware-crew/blob/main/public/Screenshots/Homepage.png?raw=true)
+![Collection](https://github.com/Khaled91Alkhatib/the-hardware-crew/blob/main/public/Screenshots/Collection.png?raw=true)
+![Single Product](https://github.com/Khaled91Alkhatib/the-hardware-crew/blob/main/public/Screenshots/Single%20Product.png?raw=true)
+![Cart](https://github.com/Khaled91Alkhatib/the-hardware-crew/blob/main/public/Screenshots/Cart.png?raw=true)
+![Checkout](https://github.com/Khaled91Alkhatib/the-hardware-crew/blob/main/public/Screenshots/Checkout.png?raw=true)
+![Admin Access](https://github.com/Khaled91Alkhatib/the-hardware-crew/blob/main/public/Screenshots/Admin%20access.png?raw=true)
+![Add Product](https://github.com/Khaled91Alkhatib/the-hardware-crew/blob/main/public/Screenshots/Add%20product.png?raw=true)
+![Edit Product](https://github.com/Khaled91Alkhatib/the-hardware-crew/blob/main/public/Screenshots/Edit%20product.png?raw=true)
+
 ## Setup
 * Since the website is deployed, you can visit [https://thehardwarecrew.netlify.app/](https://thehardwarecrew.netlify.app/) to check it out.
 * For admin dashboard access please click on this link and register a new user [https://thehardwarecrew.netlify.app/](https://thehardwarecrew.netlify.app/).
