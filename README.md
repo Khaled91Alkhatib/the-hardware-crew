@@ -28,7 +28,7 @@ The database used is ElephantSQL and the backend was implemented using node and 
 
 ## Setup
 * Since the website is deployed, you can visit [https://thehardwarecrew.netlify.app/](https://thehardwarecrew.netlify.app/) to check it out.
-* For admin dashboard access please click on this link and register a new user [https://thehardwarecrew.netlify.app/](https://thehardwarecrew.netlify.app/dashboard).
+* For admin dashboard access please click on this [link](https://thehardwarecrew.netlify.app/dashboard) and register a new user.
 * For the checkout, you can use 4242 4242 4242 4242 as a payment card number and the expiration date can be any date in the future. The CVV will accept any three numbers.
 * To check the github for the backend please click [Here](https://github.com/Khaled91Alkhatib/the-hardware-crew-api)
 
