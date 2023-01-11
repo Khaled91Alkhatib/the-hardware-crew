@@ -38,9 +38,9 @@ const Navbar = () => {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              <button><NavLink className='collection' to="/products/keyboards">Keyboards</NavLink></button>
-              <button><NavLink className='collection' to="/products/mice">Mice</NavLink></button>
-              <button><NavLink className='collection' to="/products/headsets">Headsets</NavLink></button>
+              <button onClick={() => setToggle(false)}><NavLink className='collection' to="/products/keyboards">Keyboards</NavLink></button>
+              <button onClick={() => setToggle(false)}><NavLink className='collection' to="/products/mice">Mice</NavLink></button>
+              <button onClick={() => setToggle(false)}><NavLink className='collection' to="/products/headsets">Headsets</NavLink></button>
             </ul>
           </motion.div>}
       </div>
