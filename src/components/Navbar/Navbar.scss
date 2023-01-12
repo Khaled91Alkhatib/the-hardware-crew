@@ -17,10 +17,10 @@
     // height: 60px;
     width: 200px;
     padding: 10px;
-
   }
 
-  .collection-names {
+  .collection-names,
+  .admin-names {
     @media screen and (max-width: 700px) {
       display: none;
     }

@@ -9,12 +9,20 @@
   background-color: black;
   font-size: 20px;
 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
   .form {
     background-color: rgb(29, 29, 29);
     color: white;
     margin: 0 2em;
     padding: 2em 3em;
     border-radius: 15px;
+    @media screen and (max-width: 768px) {
+      font-size: 15px;
+      margin-bottom: 1em;
+    }
   }
 }
 
@@ -24,15 +32,16 @@
   justify-content: space-between;
 }
 
-.login, .register {
+.login,
+.register {
   border: none;
   padding: 0.5em 2em;
   font-weight: bold;
   color: white;
   border-radius: 8px;
   margin-top: 1em;
-  
-  &:hover{
+
+  &:hover {
     cursor: pointer;
   }
 
