@@ -109,7 +109,7 @@ const AddProducts = ({ addProduct, setNewSku, setNewName, setNewPrice, setNewDes
         <br />
         <br />
         <div className='left-right'>
-          <div>
+          <div style={{marginRight:"1em"}}>
             <div className='individuals'>
               <label>SKU: </label>
               <input onChange={e => { setNewSku(e.target.value); }} className='input' required placeholder='SKU...'></input>
