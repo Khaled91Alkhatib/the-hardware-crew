@@ -156,6 +156,10 @@
 .data-images-edit {
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 }
 
 .general-save-button {
