@@ -17,6 +17,10 @@
     // height: 60px;
     width: 200px;
     padding: 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .collection-names,
