@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import GeneralContext from '../../contexts/GeneralContext';
 
@@ -16,6 +16,7 @@ const SingleProduct = () => {
   const [product, setProduct] = useState({});
   const [images, setImages] = useState([]);
   const [allColors, setAllColors] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (product.sku) {
@@ -93,25 +94,28 @@ const SingleProduct = () => {
 
   return (
     <div className='single-product'>
-      <div className='inner-container'>
-        <div>
-          <Image images={images} leftImage={leftImage} rightImage={rightImage} />
-        </div>
-        <div className='product-texts'>
-          <div className='product-name'>{product.name}</div>
-          <br />
-          <div>SKU: {product.sku}</div>
-          <br />
-          <div className='price'>${(product.price / 100).toFixed(2)}</div>
-          <br />
-          <div>Color: {product.color}</div>
-          <Colors allColors={allColors} colorHandler={colorHandler} />
-          <br />
-          <span style={{ textDecoration: 'underline' }} className='description'>Description:</span>
-          <div style={{ marginTop: "10px" }}>{product.description}</div>
-          <div className='add-to-cart-position'>
-            <button onClick={addToCart} className='add-to-cart'>ADD TO CART</button>
-            <ToastContainer />
+      <div className='full-container'>
+        <button className='back-button' onClick={() => navigate(-1)}>Back</button>
+        <div className='inner-container'>
+          <div>
+            <Image images={images} leftImage={leftImage} rightImage={rightImage} />
+          </div>
+          <div className='product-texts'>
+            <div className='product-name'>{product.name}</div>
+            <br />
+            <div>SKU: {product.sku}</div>
+            <br />
+            <div className='price'>${(product.price / 100).toFixed(2)}</div>
+            <br />
+            <div>Color: {product.color}</div>
+            <Colors allColors={allColors} colorHandler={colorHandler} />
+            <br />
+            <span style={{ textDecoration: 'underline' }} className='description'>Description:</span>
+            <div style={{ marginTop: "10px" }}>{product.description}</div>
+            <div className='add-to-cart-position'>
+              <button onClick={addToCart} className='add-to-cart'>ADD TO CART</button>
+              <ToastContainer />
+            </div>
           </div>
         </div>
       </div>
