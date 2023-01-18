@@ -10,6 +10,11 @@ import './SingleProduct.scss';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+library.add(faArrowLeftLong);
+
 const SingleProduct = () => {
   const { products, cart, setCart, siteUrl } = useContext(GeneralContext);
   const [id, setId] = useState(Number(useParams().id));
@@ -95,7 +100,7 @@ const SingleProduct = () => {
   return (
     <div className='single-product'>
       <div className='full-container'>
-        <button className='back-button' onClick={() => navigate(-1)}>Back</button>
+        <button className='back-button' onClick={() => navigate(-1)}><FontAwesomeIcon icon="fa-solid fa-arrow-left-long" /> Back</button>
         <div className='inner-container'>
           <div>
             <Image images={images} leftImage={leftImage} rightImage={rightImage} />
